@@ -41,6 +41,7 @@ body{
     display: flex;
     justify-content: space-around;
     margin: 2% 18%;
+    flex-wrap: wrap;
 }
 
 .card{
@@ -116,3 +117,44 @@ body{
     width: 150px;
 }
 
+.client-order{
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    margin: 0 20% 5% 20%;
+    padding: 4%;
+}
+
+.eachPizza{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.cart_flavour{
+    color: #0e0e0e;
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.cart_price{
+    font-family: Brand, sans-serif;
+    text-align: end;
+    color: #f2482e;
+    font-weight: 600;
+    font-size: 1.5rem;
+    align-self: flex-end;
+}
+
+.carrito_h3{
+    margin: 1rem;
+    padding: 2rem;
+    display: flex;
+    justify-content: center;
+    font-family: Brand, sans-serif;
+    color: #0e0e0e;
+    background-color: #f2482e;
+    font-size: 3rem;
+
+}
