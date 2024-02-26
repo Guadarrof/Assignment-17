@@ -1,6 +1,6 @@
 
 const cart=document.getElementById("cartList");
-const totalPrice=document.getElementById("total");
+const totalPrice=document.getElementById("totalPrice");
 const cardTarget=document.getElementById("cardContainer");
 const cartTarget=document.getElementById("cartList");
 
@@ -81,14 +81,16 @@ function createCart(){
     if(localStorage.getItem('AddedPizzas')){
         cartTarget.innerHTML ="";
         addedPizzas= JSON.parse(localStorage.getItem('AddedPizzas'));
+        let total=0;
         for (let i = 0; i < addedPizzas.length; i++) {
             let pizza= addedPizzas[i]  
             cartTarget.innerHTML +=`<div class= "eachPizza">
+            <button class="cart_btn" onClick="deletePizza(${i})">x</button>
             <p class="cart_name cart_flavour">${pizza.flavor}</p>
             <p class="cart_price cart_price">$ ${pizza.price}</p>
-            <button class="cart_btn" onClick="deletePizza(${i})">x</button>
-            </div>
-            `
+            </div>`;
+            total+=parseInt(pizza.price);
+            totalPrice.innerText=total;
         }
     }
 }
@@ -105,7 +107,7 @@ function savePizza(flavor, price){
     }
     addedPizzas.push(pizza);
     localStorage.setItem('AddedPizzas', JSON.stringify(addedPizzas));
-    
+
     alert("Pizza agregada");
     createCart();
 }
@@ -116,6 +118,9 @@ function deletePizza(index){
     addedPizzas= JSON.parse(localStorage.getItem('AddedPizzas'));
     addedPizzas.splice(index, 1);
     localStorage.setItem('AddedPizzas', JSON.stringify(addedPizzas));
+    if (index==0){
+        totalPrice.innerText="";
+    }
     createCart();
 }
 
